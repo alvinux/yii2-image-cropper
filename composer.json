@@ -1,0 +1,21 @@
+{
+    "name": "alvinojutsu/yii2-image-cropper",
+    "description": "yii2 image cropper",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alvinux",
+            "email": "alvin@alvinux.me"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "alvinux\\imagecropper\\": ""
+        }
+    }
+}
