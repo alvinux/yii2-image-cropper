@@ -36,6 +36,26 @@ CropperAsset::register($this);
         width: 100%;
         height: 100%;
     }
+			
+    .img-preview > img {
+        max-width: 100%;
+    }
+    .img-container, .img-preview {
+        background-color: #f7f7f7;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+    }
+    .img-preview {
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .preview-lg {
+        width: 263px;
+        height: 148px;
+    }
+		
 </style>
 
 <!-- begin: .tray-center -->
