@@ -38,29 +38,30 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 Without $model
- ``           <?= \docotel\admindesign\widgets\Cropper::widget([
-                'name' => 'Post[picture]',
-                // 'value' => 'https://fengyuanchen.github.io/cropper/images/picture.jpg', // Default blank image if not sett
-                'options' => [
-                    ['width' => 200,'height' => 200],
-                    ['width' => 500,'height' => 200],
-                    ['width' => 500,'height' => 100],
-                ],
-				'thumbnail' => ['width' => 250, 'height' => 250],
-                'pluginOptions' => [
-                    // https://github.com/fengyuanchen/cropper
-                    // Options default
-                    // 'autoCropArea'   => true,
-                    // 'strict'   => false,
-                    // 'guides'   => true,
-                    // 'highlight'   => true,
-                ]
-            ]); ?>
-``
+```php           
+<?= \alvinux\imagecropper\Cropper::widget([
+    'name' => 'Post[picture]',
+    // 'value' => 'https://fengyuanchen.github.io/cropper/images/picture.jpg', // Default blank image if not sett
+    'options' => [
+        ['width' => 200,'height' => 200],
+        ['width' => 500,'height' => 200],
+        ['width' => 500,'height' => 100],
+    ],
+    'thumbnail' => ['width' => 250, 'height' => 250],
+    'pluginOptions' => [
+        // https://github.com/fengyuanchen/cropper
+        // Options default
+        // 'autoCropArea'   => true,
+        // 'strict'   => false,
+        // 'guides'   => true,
+        // 'highlight'   => true,
+    ]
+]); ?>
+```
 
 With $model
-``
-<?= \docotel\admindesign\widgets\Cropper::widget([
+```php
+<?= \alvinux\imagecropper\Cropper::widget([
     'model' => $model,
     'attribute' => 'picture',
     'options' => [
@@ -68,9 +69,9 @@ With $model
         ['width' => 500,'height' => 200],
         ['width' => 500,'height' => 100],
     ],
-	'thumbnail' => ['width' => 250, 'height' => 250],
+    'thumbnail' => ['width' => 250, 'height' => 250],
     'pluginOptions' => [
         //https://github.com/fengyuanchen/cropper
     ]
 ]); ?>
-``
+```
