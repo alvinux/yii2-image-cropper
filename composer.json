@@ -12,7 +12,9 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/cropper" : "*"
+        "bower-asset/cropper" : "*",
+        "bower-asset/fontawesome": "*"
+		
     },
     "autoload": {
         "psr-4": {
