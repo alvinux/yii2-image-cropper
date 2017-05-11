@@ -14,7 +14,7 @@ class Cropper extends Widget {
 
     public $options       = [];
 
-    public $thumbnail       = ['width' => 150, 'height' => 150];
+    public $thumbnail     = ['width' => 150, 'height' => 150];
 
     public $pluginOptions = [];
 
@@ -23,6 +23,10 @@ class Cropper extends Widget {
     public $attribute     = '';
 
     public $name          = '';
+
+    public $autoCrop      = true;
+
+    public $showThumbnailCropper    = false;
 
     public $value;
 
@@ -68,6 +72,8 @@ class Cropper extends Widget {
             'attribute'     => $this->attribute,
             'options'       => $this->options,
             'thumbnail'       => $this->thumbnail,
+            'autoCrop'       => $this->autoCrop,
+            'showThumbnailCropper'       => $this->showThumbnailCropper,
             'pluginOptions' => json_encode($this->pluginOptions),
         ]);
     }

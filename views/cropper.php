@@ -23,6 +23,7 @@ CropperAsset::register($this);
         background: #fafafa;
         opacity: 0.8;
         cursor: pointer;
+        display: block;
     }
 
     .img-container label i {
@@ -55,7 +56,6 @@ CropperAsset::register($this);
         width: 263px;
         height: 148px;
     }
-		
 </style>
 
 <!-- begin: .tray-center -->
@@ -76,6 +76,7 @@ CropperAsset::register($this);
                 'item' => $item,
                 'value' => $value,
                 'name' => $name,
+                'autoCrop' => $autoCrop,
                 'pluginOptions' => $pluginOptions,
             ]); 
         ?>
@@ -87,6 +88,8 @@ CropperAsset::register($this);
             'item' => $thumbnail,
             'value' => $value,
             'name' => $name,
+            'autoCrop' => $autoCrop,
+            'showThumbnailCropper' => $showThumbnailCropper,
             'pluginOptions' => $pluginOptions,
         ]); 
     ?>
@@ -124,12 +127,17 @@ jQuery(document).ready(function() {
                             // URL.revokeObjectURL(blobURL); // Revoke when load complete
                         }).cropper('reset', true).cropper('replace', blobURL);
                     });
-                    $('.img-markerthumbnail> img').one('built.cropper', function() {
+
+                    //Special for thumbnail
+                    $('.img-markerthumbnail > img').one('built.cropper', function() {
                     }).cropper('reset', true).cropper('replace', blobURL)
 
                     $('.successCrop').hide();
                     $('.panel-cropper').show();
-                    // $('.value64base').val(''); //reset value 
+
+                    if ('$autoCrop' !== '1') {
+                        $('.value64base').val(''); //reset value 
+                    }
                     // varInputImage.val(''); //reset value
                 } else {
                     showMessage('Please choose an image file.');

@@ -84,13 +84,15 @@
                             </button>
                         </div>
 
+                        <?php if (!$autoCrop): ?>
                         <div class="btn-group btn-group-crop">
                             <button class="btn btn-success btn-sm" data-methodcrop="getCroppedCanvas" data-option="{ &quot;width&quot;: <?= $width ?>, &quot;height&quot;: <?= $height ?> }" type="button">
                                 <span class="docs-tooltip" data-toggle="tooltip" >
                                     Crop Image <span class="fa fa-check"></span>
                                 </span>
-                            </button> 
-                        </div> 
+                            </button>
+                        </div>
+                        <?php endif ?>
 
                         <div class="form-group" hidden="hidden">
                             <textarea name="<?= $name.'['.$widthHeight.']' ?>" class="form-control value64base value64image1<?= $widthHeight ?>" > </textarea>
@@ -121,26 +123,30 @@
                         preview: '.img-preview' + WidthHeight,
                     };
 
-                    // options = $.merge(options,pluginOptions);
-                    // flatArray = [].concat.apply([], pluginOptions);
-                    // Array.prototype.push.apply(options,pluginOptions)
-                    // options = [].concat.apply(options,pluginOptions);
                     $.extend( options, pluginOptions );
 
-                    varImage.on({
-                        'built.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                        'cropmove.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                        'zoom.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                    }).cropper(options);
+                    if ('$autoCrop' == '1') {
+                        varImage.on({
+                            'built.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'cropmove.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'zoom.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'crop.cropper': function (e) {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                        }).cropper(options);
+                    } else {
+                        varImage.cropper(options);
+                    }
 
                     $('.successCrop' + WidthHeight).click(function(){
                         varImage.cropper('reset', true);

@@ -47,6 +47,8 @@ Without $model
         ['width' => 500,'height' => 200],
         ['width' => 500,'height' => 100],
     ],
+    'showThumbnailCropper' => true, // optional, if ( showThumbnailCropper == false && autoCrop == true ) then 'hidden' else 'show',
+    'autoCrop' => true, // optional, default (true), if autoCrop = 'true' there is no "Crop Image" button, if set false then you have to click 'Crop Image' button to get value
     'thumbnail' => ['width' => 250, 'height' => 250],
     'pluginOptions' => [
         // https://github.com/fengyuanchen/cropper
@@ -69,6 +71,8 @@ With $model
         ['width' => 500,'height' => 200],
         ['width' => 500,'height' => 100],
     ],
+    'showThumbnailCropper' => true, // optional, if ( showThumbnailCropper == false && autoCrop == true ) then 'hidden' else 'show',
+    'autoCrop' => true, // optional, default (true), if autoCrop = 'true' there is no "Crop Image" button, if set false then you have to click 'Crop Image' button to get value
     'thumbnail' => ['width' => 250, 'height' => 250],
     'pluginOptions' => [
         //https://github.com/fengyuanchen/cropper

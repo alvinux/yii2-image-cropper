@@ -2,16 +2,17 @@
             $width =  $item["width"]; 
             $height =  $item["height"]; 
             $widthHeight = 'thumbnail'; 
+            $showThumbnailCropper = (!$showThumbnailCropper && $autoCrop) ? 'hidden="hidden"' : '' ;
         ?>
 
         <!-- Image Cropper Start  -->
-        <div class="col-sm-8" hidden="hidden">
+        <div class="col-sm-8" <?= $showThumbnailCropper ?>>
             <div class="panel mt20" id="spy1">
                 <div class="panel-heading">
                     <span class="panel-icon">
                         <i class="fa fa-crop"></i>
                     </span>
-                    <span class="panel-title"> Image Cropping Utility <?php echo "Width: {$width}, Height: {$height}"; ?></span>
+                    <span class="panel-title"> Image Cropping Utility For Thumbnail <?php echo "Width: {$width}, Height: {$height}"; ?></span>
                 </div>
 
                 <div class="panel-body pn">
@@ -84,13 +85,15 @@
                             </button>
                         </div>
 
+                        <?php if (!$autoCrop): ?>
                         <div class="btn-group btn-group-crop">
                             <button class="btn btn-success btn-sm" data-methodcrop="getCroppedCanvas" data-option="{ &quot;width&quot;: <?= $width ?>, &quot;height&quot;: <?= $height ?> }" type="button">
                                 <span class="docs-tooltip" data-toggle="tooltip" >
                                     Crop Image <span class="fa fa-check"></span>
                                 </span>
-                            </button> 
-                        </div> 
+                            </button>
+                        </div>
+                        <?php endif ?>
 
                         <div class="form-group" hidden="hidden">
                             <textarea name="<?= $name.'['.$widthHeight.']' ?>" class="form-control value64base value64image1<?= $widthHeight ?>" > </textarea>
@@ -124,20 +127,28 @@
                     // options = $.merge(options,pluginOptions);
                     $.extend( options, pluginOptions );
 
-                    varImage.on({
-                        'built.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                        'cropmove.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                        'zoom.cropper' : function () {
-                            convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
-                            $('.value64image1' + WidthHeight).val(convert);
-                        },
-                    }).cropper(options);
+                    if ('$autoCrop' == '1') {
+                        varImage.on({
+                            'built.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'cropmove.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'zoom.cropper' : function () {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                            'crop.cropper': function (e) {
+                                convert = varImage.cropper('getCroppedCanvas', { "width": ImageWidth, "height": ImageHeight }).toDataURL();
+                                $('.value64image1' + WidthHeight).val(convert);
+                            },
+                        }).cropper(options);
+                    } else {
+                        varImage.cropper(options);
+                    }
 
                     $('.successCrop' + WidthHeight).click(function(){
                         varImage.cropper('reset', true);
