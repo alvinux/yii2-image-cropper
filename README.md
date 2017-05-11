@@ -83,8 +83,9 @@ With $model
 Screenshot
 ------------
 
-Default without image
-![without image](/screenshot/screencapture-none-1494417907850.png?raw=true "image empty")
+- Default without image <br/>
+![without image](/screenshot/screencapture-none-1494417907850.png?raw=true "image empty") 
+***
 
-With image
+- With image <br/>
 ![with image](/screenshot/screencapture-true-1494417965449.png?raw=true "image selected")
