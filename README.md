@@ -49,7 +49,7 @@ Without $model
     ],
     'showThumbnailCropper' => true, // optional, if ( showThumbnailCropper == false && autoCrop == true ) then 'hidden' else 'show',
     'autoCrop' => true, // optional, default (true), if autoCrop = 'true' there is no "Crop Image" button, if set false then you have to click 'Crop Image' button to get value
-    'thumbnail' => ['width' => 250, 'height' => 250],
+    'thumbnail' => ['width' => 250, 'height' => 250], // optional, default 150 x 150
     'pluginOptions' => [
         // https://github.com/fengyuanchen/cropper
         // Options default
@@ -73,9 +73,18 @@ With $model
     ],
     'showThumbnailCropper' => true, // optional, if ( showThumbnailCropper == false && autoCrop == true ) then 'hidden' else 'show',
     'autoCrop' => true, // optional, default (true), if autoCrop = 'true' there is no "Crop Image" button, if set false then you have to click 'Crop Image' button to get value
-    'thumbnail' => ['width' => 250, 'height' => 250],
+    'thumbnail' => ['width' => 250, 'height' => 250], // optional, default 150 x 150
     'pluginOptions' => [
         //https://github.com/fengyuanchen/cropper
     ]
 ]); ?>
 ```
+
+Screenshot
+------------
+
+Default without image
+![without image](/screenshot/screencapture-none-1494417907850.png?raw=true "image empty")
+
+With image
+![with image](/screenshot/screencapture-true-1494417965449.png?raw=true "image selected")
